@@ -6,8 +6,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "jest",
-    "prepare": "husky install",
-    "add-hook": "husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'"
+    "prepare": "husky install"
   },
   "dependencies": {
     "vue": "^3.2.25"
@@ -40,16 +39,5 @@
     "vite": "^2.7.2",
     "vue-jest": "^5.0.0-alpha.10",
     "vue-tsc": "^0.29.8"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }
