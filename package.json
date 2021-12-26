@@ -5,7 +5,9 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "active-hooks": "husky install",
+    "add-hook": "husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'"
   },
   "dependencies": {
     "vue": "^3.2.25"
@@ -13,6 +15,8 @@
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
+    "@commitlint/cli": "^16.0.0",
+    "@commitlint/config-conventional": "^16.0.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
@@ -26,13 +30,26 @@
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^7.20.0",
+    "husky": "^6.0.0",
     "jest": "^27.4.5",
     "jest-html-reporter": "^3.4.2",
+    "lint-staged": "^12.1.4",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.2",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
     "vue-jest": "^5.0.0-alpha.10",
     "vue-tsc": "^0.29.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
