@@ -6,7 +6,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "jest",
-    "active-hooks": "husky install",
+    "prepare": "husky install",
     "add-hook": "husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'"
   },
   "dependencies": {
